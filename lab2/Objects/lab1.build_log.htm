@@ -26,18 +26,239 @@ Project File Date:  02/14/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'Target 1'
-code/time_ops.c(47): warning: non-void function does not return a value in all control paths [-Wreturn-type]
+Rebuild target 'Target 1'
+compiling sttimer.c...
+code/main.c(187): warning: incompatible pointer types passing 'volatile uint16_t (*)[100]' (aka 'volatile unsigned short (*)[100]') to parameter of type 'uint16_t *' (aka 'unsigned short *') [-Wincompatible-pointer-types]
+                averageTime = getAverageTime(&totalTimes, RUNS); // 50
+                                             ^~~~~~~~~~~
+code/util.h(32): note: passing argument to parameter 'times' here
+double getAverageTime(uint16_t* times, uint16_t amount);
+                                ^
+code/main.c(200): warning: incompatible pointer types passing 'volatile uint16_t (*)[100]' (aka 'volatile unsigned short (*)[100]') to parameter of type 'uint16_t *' (aka 'unsigned short *') [-Wincompatible-pointer-types]
+                averageTime = getAverageTime(&totalTimes, RUNS); 
+                                             ^~~~~~~~~~~
+code/util.h(32): note: passing argument to parameter 'times' here
+double getAverageTime(uint16_t* times, uint16_t amount);
+                                ^
+code/main.c(225): warning: incompatible pointer types passing 'volatile uint16_t (*)[100]' (aka 'volatile unsigned short (*)[100]') to parameter of type 'uint16_t *' (aka 'unsigned short *') [-Wincompatible-pointer-types]
+                averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+                                             ^~~~~~~~~~~
+code/util.h(32): note: passing argument to parameter 'times' here
+double getAverageTime(uint16_t* times, uint16_t amount);
+                                ^
+code/main.c(226): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'char *' [-Wincompatible-pointer-types]
+                sprintf(&outputStringBuffer, "Sine Horner Average time: %.2lf", averageTime);
+                        ^~~~~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(417): note: passing argument to parameter here
+extern _ARMABI int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+                                                  ^
+code/main.c(227): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wincompatible-pointer-types]
+                printScreen(&outputStringBuffer);
+                            ^~~~~~~~~~~~~~~~~~~
+code/CLI.h(19): note: passing argument to parameter here
+void printScreen(const uint8_t*);
+                               ^
+code/main.c(240): warning: incompatible pointer types passing 'volatile uint16_t (*)[100]' (aka 'volatile unsigned short (*)[100]') to parameter of type 'uint16_t *' (aka 'unsigned short *') [-Wincompatible-pointer-types]
+                averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+                                             ^~~~~~~~~~~
+code/util.h(32): note: passing argument to parameter 'times' here
+double getAverageTime(uint16_t* times, uint16_t amount);
+                                ^
+code/main.c(241): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'char *' [-Wincompatible-pointer-types]
+                sprintf(&outputStringBuffer, "Cos Horner Average time: %.2lf", averageTime);
+                        ^~~~~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(417): note: passing argument to parameter here
+extern _ARMABI int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+                                                  ^
+code/main.c(242): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wincompatible-pointer-types]
+                printScreen(&outputStringBuffer);
+                            ^~~~~~~~~~~~~~~~~~~
+code/CLI.h(19): note: passing argument to parameter here
+void printScreen(const uint8_t*);
+                               ^
+code/main.c(255): warning: incompatible pointer types passing 'volatile uint16_t (*)[100]' (aka 'volatile unsigned short (*)[100]') to parameter of type 'uint16_t *' (aka 'unsigned short *') [-Wincompatible-pointer-types]
+                averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+                                             ^~~~~~~~~~~
+code/util.h(32): note: passing argument to parameter 'times' here
+double getAverageTime(uint16_t* times, uint16_t amount);
+                                ^
+code/main.c(256): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'char *' [-Wincompatible-pointer-types]
+                sprintf(&outputStringBuffer, "Sin Math Average time: %.2lf", averageTime);
+                        ^~~~~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(417): note: passing argument to parameter here
+extern _ARMABI int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+                                                  ^
+code/main.c(257): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wincompatible-pointer-types]
+                printScreen(&outputStringBuffer);
+                            ^~~~~~~~~~~~~~~~~~~
+code/CLI.h(19): note: passing argument to parameter here
+void printScreen(const uint8_t*);
+                               ^
+code/main.c(270): warning: incompatible pointer types passing 'volatile uint16_t (*)[100]' (aka 'volatile unsigned short (*)[100]') to parameter of type 'uint16_t *' (aka 'unsigned short *') [-Wincompatible-pointer-types]
+                averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+                                             ^~~~~~~~~~~
+code/util.h(32): note: passing argument to parameter 'times' here
+double getAverageTime(uint16_t* times, uint16_t amount);
+                                ^
+code/main.c(271): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'char *' [-Wincompatible-pointer-types]
+                sprintf(&outputStringBuffer, "Cos Math Average time: %.2lf", averageTime);
+                        ^~~~~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(417): note: passing argument to parameter here
+extern _ARMABI int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+                                                  ^
+code/main.c(272): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wincompatible-pointer-types]
+                printScreen(&outputStringBuffer);
+                            ^~~~~~~~~~~~~~~~~~~
+code/CLI.h(19): note: passing argument to parameter here
+void printScreen(const uint8_t*);
+                               ^
+code/main.c(285): warning: incompatible pointer types passing 'volatile uint16_t (*)[100]' (aka 'volatile unsigned short (*)[100]') to parameter of type 'uint16_t *' (aka 'unsigned short *') [-Wincompatible-pointer-types]
+                averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+                                             ^~~~~~~~~~~
+code/util.h(32): note: passing argument to parameter 'times' here
+double getAverageTime(uint16_t* times, uint16_t amount);
+                                ^
+code/main.c(286): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'char *' [-Wincompatible-pointer-types]
+                sprintf(&outputStringBuffer, "Sin BAM Math Average time: %.2lf", averageTime);
+                        ^~~~~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(417): note: passing argument to parameter here
+extern _ARMABI int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+                                                  ^
+code/main.c(287): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wincompatible-pointer-types]
+                printScreen(&outputStringBuffer);
+                            ^~~~~~~~~~~~~~~~~~~
+code/CLI.h(19): note: passing argument to parameter here
+void printScreen(const uint8_t*);
+                               ^
+code/main.c(311): warning: incompatible pointer types passing 'volatile double (*)[100]' to parameter of type 'double *' [-Wincompatible-pointer-types]
+                averageError = getAverageError(&totalErrors, RUNS); // 50
+                                               ^~~~~~~~~~~~
+code/util.h(33): note: passing argument to parameter 'times' here
+double getAverageError(double* times, uint16_t amount);
+                               ^
+code/main.c(312): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'char *' [-Wincompatible-pointer-types]
+                sprintf(&outputStringBuffer, "Sine Average error: %.10f", averageError);
+                        ^~~~~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(417): note: passing argument to parameter here
+extern _ARMABI int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+                                                  ^
+code/main.c(313): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wincompatible-pointer-types]
+                printScreen(&outputStringBuffer);
+                            ^~~~~~~~~~~~~~~~~~~
+code/CLI.h(19): note: passing argument to parameter here
+void printScreen(const uint8_t*);
+                               ^
+code/main.c(325): warning: incompatible pointer types passing 'volatile double (*)[100]' to parameter of type 'double *' [-Wincompatible-pointer-types]
+                averageError = getAverageError(&totalErrors, RUNS); 
+                                               ^~~~~~~~~~~~
+code/util.h(33): note: passing argument to parameter 'times' here
+double getAverageError(double* times, uint16_t amount);
+                               ^
+code/main.c(326): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'char *' [-Wincompatible-pointer-types]
+                sprintf(&outputStringBuffer, "Cos Average error: %.10f", averageError);
+                        ^~~~~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(417): note: passing argument to parameter here
+extern _ARMABI int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+                                                  ^
+code/main.c(327): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wincompatible-pointer-types]
+                printScreen(&outputStringBuffer);
+                            ^~~~~~~~~~~~~~~~~~~
+code/CLI.h(19): note: passing argument to parameter here
+void printScreen(const uint8_t*);
+                               ^
+code/main.c(339): warning: incompatible pointer types passing 'volatile double (*)[100]' to parameter of type 'double *' [-Wincompatible-pointer-types]
+                averageError = getAverageError(&totalErrors, RUNS); // 50
+                                               ^~~~~~~~~~~~
+code/util.h(33): note: passing argument to parameter 'times' here
+double getAverageError(double* times, uint16_t amount);
+                               ^
+code/main.c(340): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'char *' [-Wincompatible-pointer-types]
+                sprintf(&outputStringBuffer, "Sine Average error: %.10f", averageError);
+                        ^~~~~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h(417): note: passing argument to parameter here
+extern _ARMABI int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+                                                  ^
+code/main.c(341): warning: incompatible pointer types passing 'char (*)[100]' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wincompatible-pointer-types]
+                printScreen(&outputStringBuffer);
+                            ^~~~~~~~~~~~~~~~~~~
+code/CLI.h(19): note: passing argument to parameter here
+void printScreen(const uint8_t*);
+                               ^
+26 warnings generated.
+compiling main.c...
+code/time_ops.c(115): warning: non-void function does not return a value in all control paths [-Wreturn-type]
 }
 ^
-code/time_ops.c(85): warning: non-void function does not return a value in all control paths [-Wreturn-type]
+code/time_ops.c(153): warning: non-void function does not return a value in all control paths [-Wreturn-type]
 }
 ^
 2 warnings generated.
 compiling time_ops.c...
+compiling uart.c...
+code/util.c(16): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+    for (int i = 0; i < amount; i++) {
+         ^
+code/util.c(27): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+    for (int i = 0; i < amount; i++) {
+         ^
+code/util.c(36): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+    for (int i = 0; i < amount; i++) {
+         ^
+code/util.c(45): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+    for (int i = 0; i < amount; i++) {
+         ^
+code/util.c(54): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+    for (int i = 0; i < amount; i++) {
+         ^
+code/util.c(62): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+    for (int i = 0; i < 8; i++) {
+         ^
+code/util.c(73): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+    for (int i = 0; i < 128; i++) {
+         ^
+code/util.c(83): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+    for (int i = 0; i < 1024; i++) {
+         ^
+code/util.c(91): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+            for (int i = 0; i < amount; i++) {
+                 ^
+code/util.c(97): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+        for (int i = 0; i < amount; i++) {
+             ^
+code/util.c(103): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+        for (int i = 0; i < 128; i++) {
+             ^
+code/util.c(109): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+        for (int i = 0; i < 128; i++) {
+             ^
+code/util.c(115): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+        for (int i = 0; i < 128; i++) {
+             ^
+code/util.c(123): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+                for (int i = 0; i < amount; i++) {
+                     ^
+code/util.c(132): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+                for (int i = 0; i < amount; i++) {
+                     ^
+code/util.c(140): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+        for (int i = 0; i < amount; i++) {
+             ^
+16 warnings generated.
+compiling util.c...
+compiling LED.c...
+RTE/Device/STM32F103RB/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+            ^
+RTE/Device/STM32F103RB/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+    ^
+1 warning generated.
+compiling system_stm32f10x.c...
+compiling CLI.c...
+assembling startup_stm32f10x_md.s...
 linking...
-Program Size: Code=14484 RO-data=1056 RW-data=28 ZI-data=2408  
-".\Objects\lab1.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=18960 RO-data=1644 RW-data=28 ZI-data=2408  
+".\Objects\lab1.axf" - 0 Error(s), 45 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -64,11 +285,11 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
-      Source file:   Device/Source/system_stm32f10x.c
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Include file:  RTE_Driver/Config/RTE_Device.h
-Build Time Elapsed:  00:00:01
+      Source file:   Device/Source/system_stm32f10x.c
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

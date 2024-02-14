@@ -270,6 +270,21 @@ void testAndPrintWithTimer() {
 		averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
 		sprintf(&outputStringBuffer, "Cos Math Average time: %.2lf", averageTime);
 		printScreen(&outputStringBuffer);
+		
+		for (i = 0; i < RUNS; i++) {
+			srand(i);
+			assignRandomDoubles(&testDouble, 1);
+			
+			startTime = timer_start();
+			sin_horner_BAM(testDouble);
+			time = timer_stop(startTime);
+			
+			totalTimes[i] = time;
+		}
+
+		averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+		sprintf(&outputStringBuffer, "Sin BAM Math Average time: %.2lf", averageTime);
+		printScreen(&outputStringBuffer);
 }
 
 void testAndPrintErrorsWithTimer() {
@@ -309,5 +324,19 @@ void testAndPrintErrorsWithTimer() {
 
 		averageError = getAverageError(&totalErrors, RUNS); 
 		sprintf(&outputStringBuffer, "Cos Average error: %.10f", averageError);
+		printScreen(&outputStringBuffer);
+		
+		for (i = 0; i < RUNS; i++) {
+			srand(i);
+			testDouble = 3.5342917;
+			
+			result = sin_horner_BAM(testDouble);
+			actual = sin(testDouble);
+			
+			totalErrors[i] = result - actual;
+		}
+		
+		averageError = getAverageError(&totalErrors, RUNS); // 50
+		sprintf(&outputStringBuffer, "Sine Average error: %.10f", averageError);
 		printScreen(&outputStringBuffer);
 }
