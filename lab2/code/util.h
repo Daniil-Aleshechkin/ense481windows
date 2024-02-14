@@ -30,6 +30,7 @@ void assignRandomByte128s(struct byte_128* byte8s);
 void assignRandomByte1024s(struct byte_1024* byte8s);
 
 double getAverageTime(uint16_t* times, uint16_t amount);
+double getAverageError(double* times, uint16_t amount);
 
 void clockInit(void);
 #endif

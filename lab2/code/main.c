@@ -6,11 +6,13 @@
 #include "LED.h"
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
-#define RUNS 500
+#define RUNS 100
 
 void testWithTimer(void);
 void testAndPrintWithTimer(void);
+void testAndPrintErrorsWithTimer(void);
 
 #define COMMAND_STRING_BUFFER_SIZE 30
 
@@ -19,6 +21,7 @@ void testAndPrintWithTimer(void);
 #define STATUS_STRING "status"
 #define HELP_STRING "help"
 #define TEST_TIMINGS_STRING "testtimes"
+#define TEST_ACCURACY_STRING "testacc"
 
 extern const char* USER_PROMPT;
 const char* USER_PROMPT = "Enter a command (help displays a list): ";
@@ -69,6 +72,8 @@ enum Commands parseReturnCommand(char* commandInput) {
 		return STATUS;
 	} else if (strcmp(TEST_TIMINGS_STRING, commandInput) == 0x00) {
 		return TEST_TIMINGS;
+	} else if (strcmp(TEST_ACCURACY_STRING, commandInput) == 0x00) {
+		return TEST_ERRORS;
 	} else {
 		return UNKNOWN;
 	}
@@ -96,6 +101,9 @@ void processCommand(enum Commands command) {
 			break;
 		case TEST_TIMINGS:
 			testAndPrintWithTimer();
+			break;
+		case TEST_ERRORS:
+			testAndPrintErrorsWithTimer();
 			break;
 		case UNKNOWN:
 			printScreen((const uint8_t*)UNKNOWN_COMMAND_ERROR);
@@ -142,7 +150,8 @@ int main(void) {
 		initCLI();
 		initLED();
 		clearScrean();
-	
+	double volatile test = -0.000717056856361;
+	test += 1;
     //while(1) {
 			//testWithTimer();
     //}
@@ -213,8 +222,8 @@ void testAndPrintWithTimer() {
 			totalTimes[i] = time;
 		}
 		
-		averageTime = getAverageTime(&totalTimes, RUNS); // 50
-		sprintf(&outputStringBuffer, "Sine Average time: %.2lf", averageTime);
+		averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+		sprintf(&outputStringBuffer, "Sine Horner Average time: %.2lf", averageTime);
 		printScreen(&outputStringBuffer);
 
 		for (i = 0; i < RUNS; i++) {
@@ -228,7 +237,77 @@ void testAndPrintWithTimer() {
 			totalTimes[i] = time;
 		}
 
-		averageTime = getAverageTime(&totalTimes, RUNS); 
-		sprintf(&outputStringBuffer, "Cos Average time: %.2lf", averageTime);
+		averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+		sprintf(&outputStringBuffer, "Cos Horner Average time: %.2lf", averageTime);
+		printScreen(&outputStringBuffer);
+		
+		for (i = 0; i < RUNS; i++) {
+			srand(i);
+			assignRandomDoubles(&testDouble, 1);
+			
+			startTime = timer_start();
+			sin(testDouble);
+			time = timer_stop(startTime);
+			
+			totalTimes[i] = time;
+		}
+
+		averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+		sprintf(&outputStringBuffer, "Sin Math Average time: %.2lf", averageTime);
+		printScreen(&outputStringBuffer);
+		
+		for (i = 0; i < RUNS; i++) {
+			srand(i);
+			assignRandomDoubles(&testDouble, 1);
+			
+			startTime = timer_start();
+			cos(testDouble);
+			time = timer_stop(startTime);
+			
+			totalTimes[i] = time;
+		}
+
+		averageTime = getAverageTime(&totalTimes, RUNS); // 4000 - 4600. Usually 4300
+		sprintf(&outputStringBuffer, "Cos Math Average time: %.2lf", averageTime);
+		printScreen(&outputStringBuffer);
+}
+
+void testAndPrintErrorsWithTimer() {
+		unsigned int i;
+		double volatile totalErrors[RUNS]; 
+		double volatile averageError = 0;
+	
+		static double testDouble;
+		static volatile double result;
+		static volatile double actual;
+		
+		char outputStringBuffer[100];
+
+		for (i = 0; i < RUNS; i++) {
+			srand(i);
+			assignRandomDoubles(&testDouble, 1);
+			
+			result = sin_horner(testDouble);
+			actual = sin(testDouble);
+			
+			totalErrors[i] = result - actual;
+		}
+		
+		averageError = getAverageError(&totalErrors, RUNS); // 50
+		sprintf(&outputStringBuffer, "Sine Average error: %.10f", averageError);
+		printScreen(&outputStringBuffer);
+
+		for (i = 0; i < RUNS; i++) {
+			srand(i);
+			assignRandomDoubles(&testDouble, 1);
+			
+			result = cos_horner(testDouble);
+			actual = cos(testDouble);
+			
+			totalErrors[i] = result - actual;
+		}
+
+		averageError = getAverageError(&totalErrors, RUNS); 
+		sprintf(&outputStringBuffer, "Cos Average error: %.10f", averageError);
 		printScreen(&outputStringBuffer);
 }

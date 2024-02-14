@@ -2,17 +2,21 @@
 #include "time_ops.h"
 
 const double ROOT_3 = 1.73205080;
-const double SIN_30 = 1/2;
-const double COS_30 = ROOT_3/2;
-const double PI = 3.141512654;
+const double SIN_30 = 1.0/2.0;
+const double COS_30 = ROOT_3/2.0;
+const double PI = 3.14159265358;
 const double PI_OVER_6 = PI / 6.0;
 
 double sin_horner(double x) {
-    double z = x * x;
-    long n = (long)(x / PI_OVER_6 + 0.5);
-    double sine = ((z/20.0 - 1) * z/6.0+1) * x;
+		long n = (long)(x/PI_OVER_6);
+		
+		double shiftedValue = x - n * PI_OVER_6;
+    double z = shiftedValue * shiftedValue;
+    double sine = ((z/20.0 - 1) * z/6.0+1) * shiftedValue;
     double cosine = ((z/30.0 + 1) * z/12.0-1) * z/2.0 + 1;
-
+	
+		n = n % 12;
+		
     switch (n) {
         case 0:
             return sine;
@@ -43,10 +47,14 @@ double sin_horner(double x) {
 }
 
 double cos_horner(double x) {
-    double z = x * x;
-    long n = (long)(x / PI_OVER_6 + 0.5);
-    double sine = ((z/20.0 - 1) * z/6.0+1) * x;
+		long n = (long)(x/PI_OVER_6);
+		
+		double shiftedValue = x - n * PI_OVER_6;
+    double z = shiftedValue * shiftedValue;
+    double sine = ((z/20.0 - 1) * z/6.0+1) * shiftedValue;
     double cosine = ((z/30.0 + 1) * z/12.0-1) * z/2.0 + 1;
+		
+		n = n % 12;
 
     switch (n) {
         case 0:

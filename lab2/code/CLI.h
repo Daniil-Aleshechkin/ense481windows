@@ -10,7 +10,8 @@ enum Commands {
 	TURN_OFF,
 	STATUS,
 	HELP,
-	TEST_TIMINGS
+	TEST_TIMINGS,
+	TEST_ERRORS
 };
 
 void initCLI(void);

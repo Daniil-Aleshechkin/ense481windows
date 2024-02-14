@@ -121,15 +121,24 @@ void assignRandomByte1024s(struct byte_1024* byte1024) {
 double getAverageTime(uint16_t* times, uint16_t amount) {
 		double sum = 0;
 		for (int i = 0; i < amount; i++) {
+			sum += (double)times[i];
+		}
+		
+		return sum / (double)amount;
+}
+
+double getAverageError(double* times, uint16_t amount) {
+		double sum = 0;
+		for (int i = 0; i < amount; i++) {
 			sum += times[i];
 		}
 		
-		return sum / amount;
+		return sum / (double)amount;
 }
 
 void assignRandomDoubles(double* doubles, uint16_t amount) {
 	for (int i = 0; i < amount; i++) {
-        doubles[i] = (double)(rand() & 0xFFFFFFFFFFFFFFFF);
+       doubles[i] = (double)(rand() & 0xFFFF);
     }
 }
 
